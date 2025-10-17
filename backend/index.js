@@ -1,5 +1,9 @@
 // Main entry file ni sha
 
+import dotenv from "dotenv";
+
+dotenv.config({ path: "../.env" });
+
 import express from "express";
 import cors from "cors";
 import authRoutes from "./routes/auth.js";
