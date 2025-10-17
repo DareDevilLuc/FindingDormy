@@ -1,20 +1,11 @@
 <script setup>
-import TailwindTest from './components/TailwindTest.vue'
+import LoginView from './views/LoginView.vue';
 import { ref, onMounted } from 'vue'
-
-const message = ref("Loading...")
-
-onMounted(async () => {
-  const res = await fetch("http://localhost:3000/api/hello")
-  const data = await res.json()
-  message.value = data.message
-})
-
 </script>
 
 <template> 
-  <div>
-    <TailwindTest></TailwindTest>
+  <div style="background: linear-gradient(to bottom, #B9E2F5, #6C848F); min-height: 100vh;">
+    <LoginView></LoginView>
   </div>
 </template>
 
