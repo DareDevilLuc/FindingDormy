@@ -1,9 +1,8 @@
 <script setup>
-
 </script>
 
 <template>
     <div>
-        <p>This is Login</p>
+        <p>This is Signup</p>
     </div>
 </template>
