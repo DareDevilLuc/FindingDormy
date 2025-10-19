@@ -2,7 +2,7 @@
 A platform for convenience that aims to help users find dormmates in order to fill their living space or to find living spaces themselves, matching with other people that fits their preferences through filters.
 
 ## Technologies Used
-* **Frontend:** Vue 3, Vite
+* **Frontend:** Vue 3, Vite, Tailwind
 * **Backend:** Node.js + Express.js, PostgreSQL, Nodemon for live reload during development
 
 ## Setup
