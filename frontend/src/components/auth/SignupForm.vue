@@ -24,12 +24,6 @@ const handleSignup = () => {
 
 <template>
   <div class="flex flex-col items-center mt-6 space-y-6">
-    <input
-      v-model="email"
-      type="email"
-      placeholder="Email"
-      class="w-[300px] p-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#84CDEE]"
-    />
 
     <input
       v-model="username"
