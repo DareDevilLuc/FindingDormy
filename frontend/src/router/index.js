@@ -9,7 +9,7 @@ import SelectPreferencesView from '../views/SelectPreferencesView.vue';
 const routes = [
     {
         path: '/',
-        redirect: '/pref/selectPref' 
+        redirect: '/pref/selectPref',
     },
     {
         path: '/auth',
