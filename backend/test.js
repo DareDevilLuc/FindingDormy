@@ -1,4 +1,4 @@
-import pool from "./databasepg.js"; // or ./db.js if that’s your filename
+import pool from "./databasepg.js"; 
 
 async function testConnection() {
     try {

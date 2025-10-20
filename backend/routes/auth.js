@@ -52,4 +52,15 @@ router.post("/login", async (req, res) => {
     }
 });
 
+// Simple test route to confirm DB works
+router.get("/testdb", async (req, res) => {
+  try {
+    const result = await pool.query("SELECT NOW()");
+    res.json({ message: "Connected to PostgreSQL", time: result.rows[0].now });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Database connection failed" });
+  }
+});
+
 export default router;
