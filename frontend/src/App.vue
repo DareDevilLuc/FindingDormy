@@ -1,6 +1,4 @@
 <script setup>
-import LoginView from './views/LoginView.vue';
-import { ref, onMounted } from 'vue'
 </script>
 
 <template>
