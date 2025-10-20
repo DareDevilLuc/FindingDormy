@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import AuthLayout from '../layouts/AuthLayout.vue';
-import LoginView from '../views/LoginView.vue';
-import SignupView from '../views/SignupView.vue';
+import LoginView from '../views/auth/LoginView.vue';
+import SignupView from '../views/auth/SignupView.vue';
 import PreferencesLayout from '../layouts/PreferencesLayout.vue';
-import SelectPreferencesView from '../views/SelectPreferencesView.vue';
+import SelectPreferencesView from '../views/pref/SelectPreferencesView.vue';
 // Import Pages here
 
 const routes = [
