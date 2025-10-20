@@ -4,6 +4,8 @@ import LoginView from '../views/auth/LoginView.vue';
 import SignupView from '../views/auth/SignupView.vue';
 import PreferencesLayout from '../layouts/PreferencesLayout.vue';
 import SelectPreferencesView from '../views/pref/SelectPreferencesView.vue';
+import HomeView from '../views/main/HomeView.vue';
+import MainLayout from '../layouts/MainLayout.vue';
 // Import Pages here
 
 const routes = [
@@ -35,6 +37,17 @@ const routes = [
                 path: 'selectPref',
                 name: 'selectPref',
                 component: SelectPreferencesView
+            }
+        ]
+    },
+    {
+        path: '/main',
+        component: MainLayout,
+        children: [
+            {
+                path: 'home',
+                name: 'home',
+                component: HomeView
             }
         ]
     }
