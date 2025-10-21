@@ -5,6 +5,10 @@ import SignupView from '../views/auth/SignupView.vue';
 import PreferencesLayout from '../layouts/PreferencesLayout.vue';
 import SelectPreferencesView from '../views/pref/SelectPreferencesView.vue';
 import CleanlinessView from '../views/pref/CleanlinessView.vue';
+import BudgetView from '../views/pref/BudgetView.vue';
+import SleepScheduleView from '../views/pref/SleepScheduleView.vue';
+import StudyWorkView from '../views/pref/StudyWorkView.vue';
+import LikesView from '../views/pref/LikesView.vue';
 // Import Pages here
 
 const routes = [
@@ -41,7 +45,27 @@ const routes = [
                 path: 'cleanliness',
                 name: 'cleanliness',
                 component: CleanlinessView
-              }
+            },
+            {
+                path: 'budget',
+                name: 'budget',
+                component: BudgetView
+            },
+            {
+                path: 'sleep',
+                name: 'sleep',
+                component: SleepScheduleView
+            },
+            {
+                path: 'habits',
+                name: 'habits',
+                component: StudyWorkView
+            },
+            {
+                path: 'likes',
+                name: 'likes',
+                component: LikesView
+            }
         ]
     }
 ];
