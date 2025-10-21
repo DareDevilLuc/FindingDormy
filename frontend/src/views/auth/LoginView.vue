@@ -1,23 +1,20 @@
 <script setup>
-// Imports from the 'Russel_branch' (HEAD)
-import { onMounted, ref } from 'vue';
 
-// Import from the 'main' branch
+import { onMounted, ref } from 'vue';
 import LoginForm from '../../components/auth/LoginForm.vue';
 
-// State and logic from the 'Russel_branch' (HEAD)
 const message = ref("");
 
-onMounted(async () => {
- try {
- const res = await fetch("http://localhost:3000/api/hello");
- const data = await res.json();
-  message.value = data.message;
- } catch (err) {
- message.value = "Error connecting to backend 😢";
- console.error(err);
- }
-});
+  onMounted(async () => {
+    try {
+      const res = await fetch("http://localhost:3000/api/hello");
+      const data = await res.json();
+      message.value = data.message;
+    } catch (err) {
+      message.value = "Error connecting to backend 😢";
+      console.error(err);
+    }
+  });
 </script>
 
 <template>

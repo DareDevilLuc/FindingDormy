@@ -1,3 +1,5 @@
+//signup/login
+
 import express from "express";
 import bcrypt from "bcrypt";
 import pool from "../databasepg.js";
@@ -7,6 +9,10 @@ const router = express.Router();
 // REGISTER
 router.post("/register", async (req, res) => {
     const { username, password } = req.body;
+
+    if (!username || !password) {
+        return res.status(400).json({ error: "Username and password are required." });
+    }
     try {
         // Check if username exists
         const userExists = await pool.query("SELECT * FROM users WHERE username = $1", [username]);
@@ -34,6 +40,10 @@ router.post("/register", async (req, res) => {
 // LOGIN
 router.post("/login", async (req, res) => {
     const { username, password } = req.body;
+
+    if (!username || !password) {
+        return res.status(400).json({ error: "Username and password are required." });
+    }
     try {
         const result = await pool.query("SELECT * FROM users WHERE username = $1", [username]);
         if (result.rows.length === 0) {
@@ -52,15 +62,15 @@ router.post("/login", async (req, res) => {
     }
 });
 
-// Simple test route to confirm DB works
-router.get("/testdb", async (req, res) => {
-  try {
-    const result = await pool.query("SELECT NOW()");
-    res.json({ message: "Connected to PostgreSQL", time: result.rows[0].now });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Database connection failed" });
-  }
-});
+// // Simple test route to confirm DB works
+// router.get("/testdb", async (req, res) => {
+//   try {
+//     const result = await pool.query("SELECT NOW()");
+//     res.json({ message: "Connected to PostgreSQL", time: result.rows[0].now });
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).json({ error: "Database connection failed" });
+//   }
+// });
 
 export default router;

@@ -1,6 +1,8 @@
 // Main entry file ni sha
 
 import dotenv from "dotenv";
+import profileRoutes from "./routes/profile.js";
+app.use("/profiles", profileRoutes);
 
 dotenv.config({ path: "../.env" });
 
