@@ -29,7 +29,9 @@ router.post("/", async (req, res) => {
 
         const values = [user_id, name, age, gender, sleep_schedule, school, picture_url];
         const result = await pool.query(query, values);
-        res.json(result.rows[0]);
+
+        res.status(201).json({ message: "Profile saved successfully", profile: result.rows[0] });
+
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Server error" });
