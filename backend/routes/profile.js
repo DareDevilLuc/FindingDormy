@@ -6,32 +6,46 @@ import pool from "../databasepg.js";
 const router = express.Router();
 
 // Create or update a profile
+// Create or update a profile
 router.post("/", async (req, res) => {
     try {
-        const { user_id, name, age, gender, sleep_schedule, school, picture_url } = req.body;
+        const { user_id, name, age, gender, school, picture_url } = req.body;
+
         if (!user_id) {
             return res.status(400).json({ error: "user_id is required" });
         }
 
         const query = `
-      INSERT INTO profiles (user_id, name, age, gender, sleep_schedule, school, picture_url)
-      VALUES ($1, $2, $3, $4, $5, $6, $7)
-      ON CONFLICT (user_id)
-      DO UPDATE SET
-        name = EXCLUDED.name,
-        age = EXCLUDED.age,
-        gender = EXCLUDED.gender,
-        sleep_schedule = EXCLUDED.sleep_schedule,
-        school = EXCLUDED.school,
-        picture_url = EXCLUDED.picture_url
-      RETURNING *;
-    `;
+        INSERT INTO profiles (user_id, name, age, gender, school, picture_url)
+        VALUES ($1, $2, $3, $4, $5, $6)
+        ON CONFLICT (user_id)
+        DO UPDATE SET
+          name = EXCLUDED.name,
+          age = EXCLUDED.age,
+          gender = EXCLUDED.gender,
+          school = EXCLUDED.school,
+          picture_url = EXCLUDED.picture_url
+        RETURNING *;
+      `;
 
-        const values = [user_id, name, age, gender, sleep_schedule, school, picture_url];
+        const values = [user_id, name, age, gender, school, picture_url];
         const result = await pool.query(query, values);
 
-        res.status(201).json({ message: "Profile saved successfully", profile: result.rows[0] });
+        res.status(201).json({
+            message: "Profile saved successfully",
+            profile: result.rows[0],
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Server error" });
+    }
+});
 
+// Get all profiles
+router.get("/", async (req, res) => {
+    try {
+        const result = await pool.query("SELECT * FROM profiles");
+        res.json(result.rows);
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Server error" });
