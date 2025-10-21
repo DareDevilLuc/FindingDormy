@@ -38,7 +38,8 @@ router.get("/:userId", async (req, res) => {
     const matches = await getRandomMatches(userId, limit || 10);
     res.json(matches);
   } catch (error) {
-    console.error("Error fetching matches:", error);
+    console.error("🔥 Error fetching matches:", error.message);
+    console.error(error.stack);
     res.status(500).json({ error: "Failed to fetch matches" });
   }
 });
