@@ -3,6 +3,7 @@ import { ref } from 'vue';
 
 // track the selected rating (1 to 5)
 const rating = ref(0);
+const hoverRating = ref(0);
 
 // stars array just for looping through 1–5 stars
 const stars = [1, 2, 3, 4, 5];
@@ -25,14 +26,17 @@ function setRating(value) {
         v-for="star in stars"
         :key="star"
         @click="setRating(star)"
-        class="focus:outline-none transition-all"
+        @mouseenter="hoverRating = star"
+        @mouseleave="hoverRating = 0"
+        class="focus:outline-none transition-all duration-200 ease-out transform"
+        :class="hoverRating >= star ? 'scale-125' : 'scale-100'"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           fill="currentColor"
-          class="w-10 h-10"
-          :class="star <= rating ? 'text-yellow-400' : 'text-gray-400'"
+          class="w-10 h-10 transition-colors duration-200"
+          :class="(star <= (hoverRating || rating)) ? 'text-yellow-400' : 'text-gray-400'"
         >
           <path
             fill-rule="evenodd"
