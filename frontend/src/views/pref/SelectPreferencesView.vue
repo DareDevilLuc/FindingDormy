@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <div class="grid grid-cols-2 gap-x-8 gap-y-1 mt-[-2rem] px-8 w-[90%] h-[60%]">
+    <div class="grid grid-cols-2 gap-x-8 gap-y-2 mt-[-2rem] px-8 w-[90%] h-[50%]">
         <PrefBar preference="Sleep Schedule"/>
         <PrefBar preference="Location"/>
         <PrefBar preference="Cleanliness Level"/>
