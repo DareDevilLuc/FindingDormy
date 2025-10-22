@@ -7,8 +7,8 @@ const route = useRoute()
 
 <template>
   <div class="flex justify-center items-center min-h-screen">
-    <div class="flex flex-col items-center bg-white max-w-[1053px] w-[1053px] max-h-[817px] h-[817px] rounded-[100px] text-center">
-      <div class="flex justify-center w-[663px] h-[442px] mt-[-5rem]">
+    <div class="flex flex-col items-center bg-white max-w-[1053px] w-[60vw] max-h-[817px] h-[80vh] rounded-[100px] text-center">
+      <div class="flex justify-center w-[50%] h-[40%] ">
         <img src="../assets/Logo.png" />
       </div>
 
@@ -23,7 +23,7 @@ const route = useRoute()
 
       <router-view />
 
-      <div class="mt-[1rem]">
+      <div class="mt-[-11rem]">
         <DoneButton />
       </div>
     </div>

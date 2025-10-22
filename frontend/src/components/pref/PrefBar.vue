@@ -6,8 +6,8 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="w-[462px] h-[130px] bg-[#DCF0FA] rounded-[100px]">
-        <button class="rounded-[100px] w-full h-full text-[24px] cursor-pointer hover:bg-[#c4e6f7] hover:shadow-md transition-all duration-200" style="font-family: 'Judson', serif;">{{ preference }}</button>
+    <div class="w-full max-w-[462px] h-[full] max-h-[80px] bg-[#DCF0FA] rounded-[100px]">
+        <button class="text-[100%] rounded-[2rem] w-full h-full text-2xl cursor-pointer hover:bg-[#c4e6f7] hover:shadow-md transition-all duration-200" style="font-family: 'Judson', serif;">{{ preference }}</button>
     </div>
 
 </template>
