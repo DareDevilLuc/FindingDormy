@@ -6,12 +6,10 @@ const maxBudget = ref(2000);
 </script>
 
 <template>
-    <div class="flex flex-col items-center justify-center mt-[-2rem]">
+    <div class="flex flex-col items-center justify-center mt-[-2rem] max-w-[50%] max-h-[50%]">
     <!-- Blue box container -->
     <div
-      class="bg-blue-100 rounded-3xl px-10 py-8 flex flex-col items-center shadow-md"
-      style="width: 500px; height: 320px; background-color: #DCF0FA"
-    >
+      class="bg-blue-100 rounded-3xl px-10 py-8 flex flex-col items-center shadow-md w-full h-full">
       <p
         class="font-judson text-[24px] mb-6 text-center"
         style="font-family: 'Judson', serif;"

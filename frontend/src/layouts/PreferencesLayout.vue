@@ -23,9 +23,7 @@ const route = useRoute()
 
       <router-view />
 
-      <div class="mt-[1rem]">
-        <DoneButton />
-      </div>
+      <DoneButton />
     </div>
   </div>
 </template>
