@@ -5,12 +5,10 @@ const studyHabit = ref('');
 </script>
 
 <template>
-    <div class="flex flex-col items-center justify-center mt-[-2rem]">
+    <div class="flex flex-col items-center justify-center mt-[-2rem] max-h-[60%] max-w-[50%]">
       <!-- Blue box container -->
       <div
-        class="rounded-3xl px-10 py-8 flex flex-col items-center shadow-md"
-        style="width: 500px; height: 300px; background-color: #DCF0FA;"
-      >
+        class="rounded-3xl px-16 py-2 flex flex-col items-center shadow-md h-full w-full bg-blue-100">
         <p
           class="font-judson text-[24px] mb-6 text-center"
           style="font-family: 'Judson', serif;"

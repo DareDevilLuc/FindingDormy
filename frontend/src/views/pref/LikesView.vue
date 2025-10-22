@@ -41,20 +41,18 @@ const toggleInterest = (interest) => {
 </script>
 
 <template>
-    <div class="flex flex-col items-center justify-center mt-[-2rem]">
+    <div class="flex flex-col items-center justify-center mt-[-2rem] max-w-[80%] max-h-[60%]">
       <!-- Blue box container -->
       <div
-        class="rounded-3xl px-10 py-8 flex flex-col items-center shadow-md"
-        style="width: 800px; height: 450px; background-color: #DCF0FA;"
-      >
+        class="rounded-3xl px-10 py-8 flex flex-col items-center shadow-md h-full w-full bg-blue-100">
         <p
-          class="font-judson text-[24px] mb-6 text-center"
+          class="font-judson text-[24px] mb-6 text-center mt-[-1rem]"
           style="font-family: 'Judson', serif;"
         >
           Likes and Interests
         </p>
         <!-- Interest Buttons Grid -->
-        <div class="grid grid-cols-4 gap-3 mb-6">
+        <div class="grid grid-cols-6 gap-3 mb-6 h-full mt-[-1rem]">
           <button
             v-for="interest in interests"
             :key="interest"
@@ -62,7 +60,7 @@ const toggleInterest = (interest) => {
             @mouseenter="hoveredInterest = interest"
             @mouseleave="hoveredInterest = null"
             :class="[
-              'py-2 px-3 rounded-lg font-medium text-sm transition-all duration-200',
+              'py-2 px-3 rounded-lg font-medium text-[8px] transition-all duration-200',
               selectedInterests.includes(interest)
                 ? 'bg-blue-600 text-white'
                 : hoveredInterest === interest
@@ -75,19 +73,19 @@ const toggleInterest = (interest) => {
         </div>
 
         <!-- Selected Section -->
-        <div class="bg-white bg-opacity-50 rounded-lg p-4">
-          <p class="text-gray-700 font-semibold mb-2">
+        <div class="bg-white bg-opacity-50 rounded-lg p-4 mt-[-1rem] mb-[-2rem]">
+          <p class="text-gray-700 font-semibold mb-2 text-[8px]">
             Selected: <span class="text-blue-600">{{ selectedInterests.length }}/5</span>
           </p>
           <div class="flex flex-wrap gap-2">
             <span
               v-for="interest in selectedInterests"
               :key="interest"
-              class="bg-blue-500 text-white px-5 py-1 rounded-full text-sm"
+              class="bg-blue-500 text-white px-5 py-1 rounded-full text-[8px]"
             >
               {{ interest }}
             </span>
-            <span v-if="selectedInterests.length === 0" class="text-gray-500 text-sm">
+            <span v-if="selectedInterests.length === 0" class="text-gray-500 text-[8px]">
               No interests selected yet
             </span>
           </div>

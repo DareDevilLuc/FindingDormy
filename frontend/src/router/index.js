@@ -81,17 +81,6 @@ const routes = [
             }
         ]
     },
-    {
-        path: '/main',
-        component: MainLayout,
-        children: [
-            {
-                path: 'home',
-                name: 'home',
-                component: HomeView
-            }
-        ]
-    }
 ];
 
 const router = createRouter({
