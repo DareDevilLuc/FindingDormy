@@ -11,14 +11,14 @@ const maxBudget = ref(2000);
     <div
       class="bg-blue-100 rounded-3xl px-10 py-8 flex flex-col items-center shadow-md w-full h-full">
       <p
-        class="font-judson text-[24px] mb-6 text-center"
+        class="font-judson text-[24px] mb-2 text-center"
         style="font-family: 'Judson', serif;"
       >
         Budget
       </p>
 
       <!-- Budget Range Slider -->
-      <div class="mb-8">
+      <div class="mb-2">
         <div class="flex justify-between mb-4">
           <span class="text-sm text-gray-600">₱{{ minBudget }}</span>
           <span class="text-sm text-gray-600">₱{{ maxBudget }}</span>

@@ -47,12 +47,10 @@ const handleDone = () => {
 </style>
 
 <template>
-    <div class="flex flex-col items-center justify-center mt-[-2rem]">
+    <div class="flex flex-col items-center justify-center mt-[-3.5rem] max-w-[40%] max-h-[60%]">
       <!-- Blue box container -->
       <div
-        class="rounded-3xl px-10 py-8 flex flex-col items-center shadow-md"
-        style="width: 500px; height: 420px; background-color: #DCF0FA;"
-      >
+        class="rounded-3xl px-10 py-8 flex flex-col items-center shadow-md bg-blue-100 h-full w-full">
         <p
           class="font-judson text-[24px] mb-6 text-center"
           style="font-family: 'Judson', serif;"
