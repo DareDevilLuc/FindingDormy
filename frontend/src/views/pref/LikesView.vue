@@ -45,7 +45,7 @@ const toggleInterest = (interest) => {
       <!-- Blue box container -->
       <div
         class="rounded-3xl px-10 py-8 flex flex-col items-center shadow-md"
-        style="width: 800px; height: 400px; background-color: #DCF0FA;"
+        style="width: 800px; height: 450px; background-color: #DCF0FA;"
       >
         <p
           class="font-judson text-[24px] mb-6 text-center"
