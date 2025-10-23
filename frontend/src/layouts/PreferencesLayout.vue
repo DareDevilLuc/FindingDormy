@@ -1,6 +1,5 @@
 <script setup>
 import { useRoute, useRouter } from 'vue-router'
-import DoneButton from '../components/pref/DoneButton.vue'
 
 const route = useRoute()
 const router = useRouter()

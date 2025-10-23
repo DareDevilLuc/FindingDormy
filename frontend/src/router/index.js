@@ -20,6 +20,7 @@ import DormPostView from '../views/posts/DormPostView.vue';
 import DormmatePostView from '../views/posts/DormmatePostView.vue';
 import ProfilesView from '../views/profile/ProfilesView.vue';
 import EditProfileView from '../views/profile/EditProfileView.vue';
+import TestView from '../views/pref/TestView.vue';
 // Import Pages here
 
 const routes = [
@@ -76,6 +77,11 @@ const routes = [
                 path: 'likes',
                 name: 'likes',
                 component: LikesView
+            },
+            {
+                path: 'test',
+                name: 'test',
+                component: TestView
             }
         ]
     },
