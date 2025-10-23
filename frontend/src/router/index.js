@@ -4,6 +4,8 @@ import LoginView from '../views/auth/LoginView.vue';
 import SignupView from '../views/auth/SignupView.vue';
 import PreferencesLayout from '../layouts/PreferencesLayout.vue';
 import SelectPreferencesView from '../views/pref/SelectPreferencesView.vue';
+import CleanlinessView from '../views/pref/CleanlinessView.vue';
+import LocationVieww from '../views/pref/LocationVieww.vue';
 // Import Pages here
 
 const routes = [
@@ -35,6 +37,16 @@ const routes = [
                 path: 'selectPref',
                 name: 'selectPref',
                 component: SelectPreferencesView
+            },
+            {
+                path: 'cleanliness',
+                name: 'cleanliness',
+                component: CleanlinessView
+            },
+            {
+                path: 'location',
+                name: 'location',
+                component: LocationVieww
             }
         ]
     }
