@@ -9,6 +9,9 @@ import BudgetView from '../views/pref/BudgetView.vue';
 import SleepScheduleView from '../views/pref/SleepScheduleView.vue';
 import StudyWorkView from '../views/pref/StudyWorkView.vue';
 import LikesView from '../views/pref/LikesView.vue';
+import ProfileLayout from '../layouts/ProfileLayout.vue';
+import Profiles from '../views/pref/Profiles.vue';
+import EditProfile from '../views/pref/EditProfile.vue';
 // Import Pages here
 
 const routes = [
@@ -65,6 +68,22 @@ const routes = [
                 path: 'likes',
                 name: 'likes',
                 component: LikesView
+            }
+        ]
+    },
+    {
+        path: '/profile',
+        component: ProfileLayout,
+        children: [
+            {
+                path: 'profile',
+                name: 'profile',
+                component: Profiles
+            },
+            {
+                path: 'editprofile',
+                name: 'editprofile',
+                component: EditProfile
             }
         ]
     }
