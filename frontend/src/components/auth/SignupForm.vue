@@ -1,29 +1,49 @@
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 const username = ref('')
 const password = ref('')
 const confirmPassword = ref('')
-
-// This controls whether the popup is visible
 const showPopup = ref(false)
 
-const handleSignup = () => {
+const router = useRouter()
+
+const handleSignup = async () => {
   if (password.value !== confirmPassword.value) {
     alert('Passwords do not match!')
     return
   }
 
-  // Log values for now
-  console.log('Username:', username.value)
-  console.log('Password:', password.value)
+  try {
+    const response = await fetch('http://localhost:3000/api/auth/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username: username.value,
+        password: password.value
+      })
+    })
 
-  // Show the success pop-up
-  showPopup.value = true
+    const data = await response.json()
+
+    if (response.ok) {
+      // Show the success pop-up
+      showPopup.value = true
+      
+    } else {
+      alert(data.error || 'Signup failed')
+    }
+
+  } catch (err) {
+    console.error('Error:', err)
+    alert('Could not connect to server')
+  }
 }
 
 const closePopup = () => {
   showPopup.value = false
+  router.push('/pref/selectPref')
 }
 </script>
 

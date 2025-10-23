@@ -1,16 +1,50 @@
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router' // Import for navigation
 
 // reactive variables to store input values
 const username = ref('')
 const password = ref('')
 
-const handleLogin = () => {
-  // For now, just log values to the console
-  console.log('Username:', username.value)
-  console.log('Password:', password.value)
+const router = useRouter() 
 
-  // RUSSEL HERE I THINK IBUTANG IMONG LOGIC?
+const handleLogin = async () => {
+   
+    if (!username.value || !password.value) {
+        alert('Please enter both username and password.')
+        return
+    }
+
+    try {
+        const response = await fetch('http://localhost:3000/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                username: username.value,
+                password: password.value
+            })
+        })
+
+        const data = await response.json()
+
+        if (response.ok) {
+            console.log('Login successful:', data)
+            
+            // 3. Handle successful login
+            // Might save the user data/token here (e.g., in local storage or a store)
+            if (data.user && data.user.id) { 
+                localStorage.setItem('user_id', data.user.id);
+            }
+            router.push('/main/home')
+
+        } else {
+            alert(data.error || 'Login failed')
+        }
+
+    } catch (err) {
+        console.error('Error connecting to server:', err)
+        alert('Could not connect to server. Check backend server status.')
+    }
 }
 </script>
 
