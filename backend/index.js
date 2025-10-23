@@ -19,6 +19,10 @@ app.use(cors());
 app.use(express.json());
 
 // API routes
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true
+}));
 app.use("/auth", authRoutes);
 app.use("/profiles", profileRoutes);
 app.use("/match", matchRoutes);
