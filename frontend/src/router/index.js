@@ -4,11 +4,15 @@ import LoginView from '../views/auth/LoginView.vue';
 import SignupView from '../views/auth/SignupView.vue';
 import PreferencesLayout from '../layouts/PreferencesLayout.vue';
 import SelectPreferencesView from '../views/pref/SelectPreferencesView.vue';
+import HomeView from '../views/main/HomeView.vue';
+import MainLayout from '../layouts/MainLayout.vue';
 import CleanlinessView from '../views/pref/CleanlinessView.vue';
 import BudgetView from '../views/pref/BudgetView.vue';
 import SleepScheduleView from '../views/pref/SleepScheduleView.vue';
 import StudyWorkView from '../views/pref/StudyWorkView.vue';
 import LikesView from '../views/pref/LikesView.vue';
+import FindPeopleView from '../views/main/FindPeopleView.vue';
+import FindDormView from '../views/main/FindDormView.vue';
 import ProfileLayout from '../layouts/ProfileLayout.vue';
 import Profiles from '../views/pref/Profiles.vue';
 import EditProfile from '../views/pref/EditProfile.vue';
@@ -86,7 +90,28 @@ const routes = [
                 component: EditProfile
             }
         ]
-    }
+    },
+    {
+        path: '/main',
+        component: MainLayout,
+        children: [
+            {
+                path: 'home',
+                name: 'home',
+                component: HomeView
+            },
+            {
+                path: 'findPeople',
+                name: 'findPeople',
+                component: FindPeopleView
+            },
+            {
+                path: 'findDorm',
+                name: 'findDorm',
+                component: FindDormView
+            }
+        ]
+    },
 ];
 
 const router = createRouter({
