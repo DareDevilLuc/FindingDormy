@@ -7,8 +7,8 @@ const props = defineProps({
 
 <template>
         <div class="
-            border border-gray-300 rounded-lg flex items-center justify-center
-            p-2 cursor-pointer transition-all duration-200 hover:bg-gray-100 hover:border-gray-400
+            border border-gray-300 rounded-lg flex items-center justify-center bg-[#DCF0FA]
+            p-2 cursor-pointer transition-all duration-200 hover:bg-blue-200 hover:border-gray-400
             
             /* Phone */
             text-xs

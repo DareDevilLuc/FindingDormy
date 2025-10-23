@@ -11,6 +11,7 @@ import BudgetView from '../views/pref/BudgetView.vue';
 import SleepScheduleView from '../views/pref/SleepScheduleView.vue';
 import StudyWorkView from '../views/pref/StudyWorkView.vue';
 import LikesView from '../views/pref/LikesView.vue';
+import FindPeopleView from '../views/main/FindPeopleView.vue';
 // Import Pages here
 
 const routes = [
@@ -78,6 +79,11 @@ const routes = [
                 path: 'home',
                 name: 'home',
                 component: HomeView
+            },
+            {
+                path: 'findPeople',
+                name: 'findPeople',
+                component: FindPeopleView
             }
         ]
     },
