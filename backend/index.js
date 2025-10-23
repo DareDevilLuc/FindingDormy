@@ -29,15 +29,5 @@ app.use("/api/match", matchRoutes);
 app.use("/api/message", messageRoutes);
 app.use("/api/preferences", preferencesRoutes);
 
-
-// Basic test routes
-app.get("/api/hello", (req, res) => {
-  res.json({ message: "Hello from Node backend!" });
-});
-
-app.get("/", (req, res) => {
-  res.send("Backend is up and running!");
-});
-
 const PORT = 3000;
 app.listen(PORT, () => console.log(`✅ Server running on http://localhost:${PORT}`));
