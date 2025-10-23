@@ -1,8 +1,13 @@
 <script setup>
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import DoneButton from '../components/pref/DoneButton.vue'
 
 const route = useRoute()
+const router = useRouter()
+
+const goToHome = () => {
+    router.push({ name: 'home' });
+};
 </script>
 
 <template>
@@ -20,8 +25,8 @@ const route = useRoute()
             /* Monitor styles (xl breakpoint: 1280px) - approx 1.5x of laptop's effective size */
             xl:max-w-[1053px] xl:min-h-[817px] xl:rounded-[100px] xl:p-12
         ">
-            <div class="flex justify-center items-center w-[60%] h-[30%] my-4 lg:w-[50%] lg:h-[40%]">
-                <img src="../assets/Logo.png" alt="Dormy Logo" class="max-w-full max-h-full object-contain" />
+            <div class="flex justify-center items-center w-[60%] h-[30%] my-4 lg:w-[50%] lg:h-[40%] cursor-pointer" @click="goToHome">
+                <img src="../assets/Logo.png" alt="Dormy Logo" class="max-w-full max-h-full object-contain hover:opacity-90 transition-opacity duration-200" />
             </div>
 
             <!-- show "Select your preferences" only on main page -->

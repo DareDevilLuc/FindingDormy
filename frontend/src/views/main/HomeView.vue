@@ -1,10 +1,23 @@
 <script setup>
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+const navigateToFindPeople = () => {
+    router.push({ name: 'findPeople' });
+};
+
+const navigateToFindDorm = () => {
+    router.push({ name: 'findDorm' });
+};
 </script>
 
 <template>
     <div class="flex flex-col justify-center items-center w-full">
         <!-- Card 1: Find a Roommate -->
-        <button class="flex flex-col bg-white justify-center items-center shadow-lg text-center transition-transform transform hover:scale-105
+        <button 
+            @click="navigateToFindPeople"
+            class="flex flex-col bg-white justify-center items-center shadow-lg text-center transition-transform transform hover:scale-105
             w-full max-w-xs p-4 rounded-[30px] -mt-6
             md:max-w-md md:p-6 md:rounded-[50px] md:-mt-8
             xl:w-[825px] xl:max-w-none xl:h-[229px] xl:p-8 xl:rounded-[65px] xl:-mt-12">
@@ -23,7 +36,9 @@
         </button>
         
         <!-- Card 2: Find a Room -->
-        <button class="flex flex-col bg-white justify-center items-center shadow-lg text-center transition-transform transform hover:scale-105
+        <button 
+            @click="navigateToFindDorm"
+            class="flex flex-col bg-white justify-center items-center shadow-lg text-center transition-transform transform hover:scale-105
             w-full max-w-xs p-4 rounded-[30px] mt-8
             md:max-w-md md:p-6 md:rounded-[50px] md:mt-12
             xl:w-[825px] xl:max-w-none xl:h-[229px] xl:p-8 xl:rounded-[65px] xl:mt-20">

@@ -1,11 +1,29 @@
 <script setup>
 import LoginSignupBar from '../components/auth/LoginSignupBar.vue'
+import { useRouter, useRoute } from 'vue-router';
+
+const router = useRouter();
+const route = useRoute();
+
+const goToHome = () => {
+    // Don't navigate if we're in login or signup pages
+    if (route.name !== 'login' && route.name !== 'signup') {
+        router.push({ name: 'home' });
+    }
+};
 </script>
 
 <template>
     <main class="flex flex-col items-center justify-center min-h-screen p-4" aria-label="Welcome screen container">
-        <div class="flex justify-center w-full px-4">
-            <img src="../assets/Logo.png" alt="Dormy Logo" class="w-full max-w-[300px] lg:max-w-[663px]" />
+        <div 
+            class="flex justify-center w-full px-4" 
+            :class="{ 'cursor-pointer': route.name !== 'login' && route.name !== 'signup' }"
+            @click="goToHome">
+            <img 
+                src="../assets/Logo.png" 
+                alt="Dormy Logo" 
+                class="w-full max-w-[300px] lg:max-w-[663px] transition-opacity duration-200"
+                :class="{ 'hover:opacity-90': route.name !== 'login' && route.name !== 'signup' }" />
         </div>
         <div class="flex justify-center w-full px-4 -mt-10 lg:-mt-20">
             <div class="
