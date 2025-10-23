@@ -14,8 +14,12 @@ import LikesView from '../views/pref/LikesView.vue';
 import FindPeopleView from '../views/main/FindPeopleView.vue';
 import FindDormView from '../views/main/FindDormView.vue';
 import ProfileLayout from '../layouts/ProfileLayout.vue';
-import Profiles from '../views/pref/Profiles.vue';
-import EditProfile from '../views/pref/EditProfile.vue';
+import Profiles from '../views/profile/ProfilesView.vue';
+import EditProfile from '../views/profile/EditProfileView.vue';
+import DormPostView from '../views/posts/DormPostView.vue';
+import DormmatePostView from '../views/posts/DormmatePostView.vue';
+import ProfilesView from '../views/profile/ProfilesView.vue';
+import EditProfileView from '../views/profile/EditProfileView.vue';
 // Import Pages here
 
 const routes = [
@@ -36,7 +40,7 @@ const routes = [
                 path: 'signup',
                 name: 'signup',
                 component: SignupView
-            }
+            },
         ]
     },
     {
@@ -82,12 +86,28 @@ const routes = [
             {
                 path: 'profile',
                 name: 'profile',
-                component: Profiles
+                component: ProfilesView
             },
             {
                 path: 'editprofile',
                 name: 'editprofile',
-                component: EditProfile
+                component: EditProfileView
+            }
+        ]
+    },
+    {
+        path: '/post',
+        component: ProfileLayout,
+        children: [
+            {
+                path: 'dormpost',
+                name: 'dormpost',
+                component: DormPostView
+            },
+            {
+                path: 'dormmatepost',
+                name: 'dormmatepost',
+                component: DormmatePostView
             }
         ]
     },
