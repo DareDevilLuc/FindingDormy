@@ -12,6 +12,7 @@ import SleepScheduleView from '../views/pref/SleepScheduleView.vue';
 import StudyWorkView from '../views/pref/StudyWorkView.vue';
 import LikesView from '../views/pref/LikesView.vue';
 import FindPeopleView from '../views/main/FindPeopleView.vue';
+import FindDormView from '../views/main/FindDormView.vue';
 // Import Pages here
 
 const routes = [
@@ -84,6 +85,11 @@ const routes = [
                 path: 'findPeople',
                 name: 'findPeople',
                 component: FindPeopleView
+            },
+            {
+                path: 'findDorm',
+                name: 'findDorm',
+                component: FindDormView
             }
         ]
     },
