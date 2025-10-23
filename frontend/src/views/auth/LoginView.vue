@@ -1,11 +1,9 @@
-// frontend/src/views/auth/LoginView.vue
-
 <script setup>
 import LoginForm from '../../components/auth/LoginForm.vue'; 
 </script>
 
 <template>
-  <LoginForm /> 
+ <LoginForm /> 
 </template>
 
 <style>
