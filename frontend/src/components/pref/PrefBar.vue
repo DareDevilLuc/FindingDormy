@@ -6,8 +6,20 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="w-full max-w-[462px] h-[full] max-h-[110px] bg-[#DCF0FA] rounded-[100px]">
-        <button class="text-[24px] rounded-[2rem] w-full h-full cursor-pointer hover:bg-[#c4e6f7] hover:shadow-md transition-all duration-200" style="font-family: 'Judson', serif;">{{ preference }}</button>
-    </div>
+        <div class="
+            border border-gray-300 rounded-lg flex items-center justify-center
+            p-2 cursor-pointer transition-all duration-200 hover:bg-gray-100 hover:border-gray-400
+            
+            /* Phone */
+            text-xs
+            
+            /* Laptop */
+            lg:text-base lg:rounded-xl lg:p-3
+            
+            /* Monitor */
+            xl:text-lg xl:rounded-2xl xl:p-4
+        ">
+            {{ preference }}
+        </div>
 
 </template>

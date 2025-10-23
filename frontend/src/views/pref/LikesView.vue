@@ -41,55 +41,77 @@ const toggleInterest = (interest) => {
 </script>
 
 <template>
-    <div class="flex flex-col items-center justify-center mt-[-2rem] max-w-[80%] max-h-[60%]">
-      <!-- Blue box container -->
-      <div
-        class="rounded-3xl px-10 py-8 flex flex-col items-center shadow-md h-full w-full bg-blue-100">
-        <p
-          class="font-judson text-[24px] mb-6 text-center mt-[-1rem]"
-          style="font-family: 'Judson', serif;"
-        >
-          Likes and Interests
-        </p>
-        <!-- Interest Buttons Grid -->
-        <div class="grid grid-cols-6 gap-3 mb-6 h-full mt-[-1rem]">
-          <button
-            v-for="interest in interests"
-            :key="interest"
-            @click="toggleInterest(interest)"
-            @mouseenter="hoveredInterest = interest"
-            @mouseleave="hoveredInterest = null"
-            :class="[
-              'py-2 px-3 rounded-lg font-medium text-[8px] transition-all duration-200',
-              selectedInterests.includes(interest)
-                ? 'bg-blue-600 text-white'
-                : hoveredInterest === interest
-                ? 'bg-blue-500 text-white'
-                : 'bg-blue-400 text-white'
-            ]"
-          >
-            {{ interest }}
-          </button>
-        </div>
+    <div class="flex flex-col items-center justify-center w-full h-full">
+        <!-- Blue box container -->
+        <div class="rounded-3xl flex flex-col items-center shadow-md bg-blue-100 
+            w-full max-w-sm h-auto p-6
+            md:max-w-md md:p-8 
+            xl:max-w-2xl xl:rounded-[50px] xl:p-10">
+            
+            <p class="font-judson text-center
+                text-xl mb-4
+                md:text-2xl md:mb-5
+                xl:text-4xl xl:mb-6">
+                Likes and Interests
+            </p>
 
-        <!-- Selected Section -->
-        <div class="bg-white bg-opacity-50 rounded-lg p-4 mt-[-1rem] mb-[-2rem]">
-          <p class="text-gray-700 font-semibold mb-2 text-[8px]">
-            Selected: <span class="text-blue-600">{{ selectedInterests.length }}/5</span>
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span
-              v-for="interest in selectedInterests"
-              :key="interest"
-              class="bg-blue-500 text-white px-5 py-1 rounded-full text-[8px]"
-            >
-              {{ interest }}
-            </span>
-            <span v-if="selectedInterests.length === 0" class="text-gray-500 text-[8px]">
-              No interests selected yet
-            </span>
-          </div>
+            <!-- Interest Buttons Grid -->
+            <div class="grid gap-2 mb-4 w-full
+                grid-cols-4
+                md:grid-cols-5 md:gap-3
+                xl:grid-cols-5 xl:gap-4">
+              <button
+                v-for="interest in interests"
+                :key="interest"
+                @click="toggleInterest(interest)"
+                @mouseenter="hoveredInterest = interest"
+                @mouseleave="hoveredInterest = null"
+                :class="[
+                  'rounded-lg font-medium transition-all duration-200',
+                  'text-[8px] py-2 px-1',
+                  'md:text-[8px] md:py-2 md:px-2',
+                  'xl:text-[12px] xl:py-3 xl:px-4',
+                  selectedInterests.includes(interest)
+                    ? 'bg-blue-600 text-white transform scale-105 shadow-md'
+                    : hoveredInterest === interest
+                    ? 'bg-blue-500 text-white'
+                    : 'bg-blue-400 text-white'
+                ]"
+              >
+                {{ interest }}
+              </button>
+            </div>
+
+            <!-- Selected Section -->
+            <div class="bg-white bg-opacity-50 rounded-lg p-3 w-full
+                md:p-4
+                xl:p-5 xl:rounded-xl">
+              <p class="font-semibold mb-2
+                text-[10px] text-gray-700
+                md:text-sm
+                xl:text-base">
+                Selected: <span class="text-blue-600">{{ selectedInterests.length }}/5</span>
+              </p>
+              <div class="flex flex-wrap gap-2 min-h-[2.5rem] xl:min-h-[3rem]">
+                <span
+                  v-for="interest in selectedInterests"
+                  :key="interest"
+                  class="bg-blue-500 text-white rounded-full
+                    text-[10px] px-3 py-1
+                    md:text-sm md:px-4
+                    xl:text-base xl:px-5"
+                >
+                  {{ interest }}
+                </span>
+                <span v-if="selectedInterests.length === 0" 
+                    class="text-gray-500
+                    text-[10px]
+                    md:text-sm
+                    xl:text-base">
+                  Select up to 5 interests
+                </span>
+              </div>
+            </div>
         </div>
-    </div>
     </div>
 </template>
