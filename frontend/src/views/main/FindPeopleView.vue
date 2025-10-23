@@ -1,6 +1,7 @@
 <script setup>
     import { ref, computed } from 'vue'
     import dave from '../../assets/dave.png'
+    import ProfileCard from '../../components/main/ProfileCard.vue';
 
     const peopleData = [
     {
@@ -45,101 +46,71 @@
     }
 ];
 
-    const people = ref(peopleData);
-    const currentIndex = ref(0);
-    const animation = ref({ direction: null, key: 0 });
+        const people = ref(peopleData);
+        const currentIndex = ref(0);
+        const animation = ref({ direction: null, key: 0 });
 
-    const nextPerson = (action) => {
-        if (currentIndex.value >= people.value.length || animation.value.direction) return;
-        
-        console.log(`${action} person with id: ${people.value[currentIndex.value].id}`);
-        animation.value = { 
-            direction: action === 'liked' ? 'right' : 'left', 
-            key: people.value[currentIndex.value].id 
+        const visiblePeople = computed(() => {
+            return people.value.slice(currentIndex.value, currentIndex.value + 3).reverse();
+        });
+
+        const nextPerson = (action) => {
+            if (currentIndex.value >= people.value.length || animation.value.direction) return;
+            
+            console.log(`${action} person with id: ${people.value[currentIndex.value].id}`);
+            animation.value = { direction: action === 'liked' ? 'right' : 'left', key: people.value[currentIndex.value].id };
         };
-    };
-    
-    const handleAnimationEnd = () => {
-        currentIndex.value++;
-        animation.value = { direction: null, key: 0 };
-    };
-
-    const visiblePeople = computed(() => {
-        return people.value.slice(currentIndex.value, currentIndex.value + 3).reverse();
-    });
-
-    const getCardStyle = (person, index) => {
-        const offset = (visiblePeople.value.length - 1) - index;
-        const scale = 1 - offset * 0.05;
-        const translateY = offset * -20;
         
-        const isAnimating = animation.value.direction && animation.value.key === person.id;
-
-        return {
-            zIndex: isAnimating ? 99 : index,
-            transform: `translateY(${translateY}px) scale(${scale})`,
-            opacity: 1,
+        const handleAnimationEnd = () => {
+            currentIndex.value++;
+            animation.value = { direction: null, key: 0 };
         };
-    };
 
-    const getCardClass = (person, index) => {
-        const classes = ['profile-card'];
-        const isTopCard = index === visiblePeople.value.length - 1;
+        const isTopCard = (index) => {
+            return index === visiblePeople.value.length - 1;
+        };
 
-        if (animation.value.direction) { // An animation is active
-            if (isTopCard && animation.value.key === person.id) {
-                // This is the card being animated out
-                classes.push(animation.value.direction === 'left' ? 'card-exit-left' : 'card-exit-right');
-            } else {
-                // These are the cards in the stack below, freeze them
-                classes.push('no-transition');
+        const getCardAnimationClass = (person, index) => {
+            if (isTopCard(index) && animation.value.key === person.id) {
+                return animation.value.direction === 'left' ? 'card-exit-left' : 'card-exit-right';
             }
-        }
-        
-        return classes.join(' ');
-    };
+            return '';
+        };
+
+        const getCardStyle = (index) => {
+            const offset = (visiblePeople.value.length - 1) - index;
+            const scale = 1 - offset * 0.05;
+            const translateY = offset * -20;
+            return {
+                zIndex: index,
+                transform: `translateY(${translateY}px) scale(${scale})`,
+                opacity: 1,
+            };
+        };
+
 
 </script>
 
 <template>
-    <div class="flex flex-col items-center justify-center w-full h-screen p-4">
-        <div class="card-stack-container">
-            <template v-if="visiblePeople.length > 0">
-                <div 
-                    v-for="(person, index) in visiblePeople" 
-                    :key="person.id"
-                    :class="[getCardClass(person, index), 'bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col']"
-                    :style="getCardStyle(person, index)"
-                    @animationend="index === visiblePeople.length - 1 && handleAnimationEnd()">
-                    
-                    <img :src="person.pictureUrl" :alt="person.name" class="w-full h-1/2 object-cover object-center">
-                    <div class="p-4 flex-grow flex flex-col md:p-6 min-h-0 overflow-y-auto">
-                        <div>
-                            <h3 class="font-outfit font-bold text-xl md:text-2xl xl:text-3xl text-left">{{ person.name }}</h3>
-                            <p class="text-gray-600 text-left text-sm mt-1 md:text-base xl:text-lg">{{ person.description }}</p>
-                            <div class="mt-3 md:mt-4">
-                                <h4 class="font-bold text-left text-sm text-gray-800 md:text-base xl:text-lg">Preferences:</h4>
-                                <div class="flex flex-wrap gap-2 mt-1">
-                                    <span v-for="pref in person.preferences" :key="pref" class="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full md:text-sm">{{ pref }}</span>
-                                </div>
-                            </div>
-                            <div class="mt-3 md:mt-4">
-                                <h4 class="font-bold text-left text-sm text-gray-800 md:text-base xl:text-lg">Interests:</h4>
-                                <div class="flex flex-wrap gap-2 mt-1">
-                                    <span v-for="interest in person.interests" :key="interest" class="bg-pink-100 text-pink-800 text-xs font-semibold px-3 py-1 rounded-full md:text-sm">{{ interest }}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <div class="h-full flex flex-col items-center p-4">
+        <div class="card-stack-container flex-grow w-full flex items-center justify-center">
+             <template v-if="visiblePeople.length > 0">
+                <div v-for="(person, index) in visiblePeople"
+                     :key="person.id"
+                     class="profile-card bg-white rounded-3xl shadow-xl flex flex-col overflow-hidden"
+                     :class="getCardAnimationClass(person, index)"
+                     @animationend="isTopCard(index) && handleAnimationEnd()"
+                     :style="getCardStyle(index)">
+                     <ProfileCard :person="person" />
                 </div>
-            </template>
-            <div v-else class="text-center flex flex-col justify-center items-center h-full">
+             </template>
+             <div v-else class="text-center flex flex-col justify-center items-center h-full">
                 <p class="font-judson text-2xl md:text-3xl xl:text-4xl text-gray-700">No more profiles!</p>
                 <p class="text-gray-500 mt-2 md:text-lg">Check back later for new people.</p>
-            </div>
+             </div>
         </div>
 
-        <div v-if="currentIndex < peopleData.length" class="flex items-center justify-center space-x-6 mt-6 md:space-x-8 md:mt-8">
+        <div v-if="currentIndex < people.length" class="flex-shrink-0 flex items-center justify-center space-x-6 mt-6 md:space-x-8">
             <button @click="nextPerson('disliked')" class="bg-white rounded-full p-3 shadow-xl transition-transform transform hover:scale-110 md:p-4 active:scale-95">
                 <svg class="w-6 h-6 text-red-500 md:w-8 md:h-8 xl:w-10 xl:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
@@ -148,6 +119,7 @@
             </button>
         </div>
     </div>
+
 </template>
 
 <style scoped>
@@ -165,10 +137,12 @@
         
         .card-stack-container {
             position: relative;
+            z-index: 0;
             width: 100%;
             height: 100%;
             max-width: 420px;
             max-height: 600px;
+            min-height: 600px;
         }
 
         .profile-card {
@@ -178,10 +152,6 @@
             will-change: transform;
             transition: transform 0.5s ease-out;
             cursor: grab;
-        }
-
-        .no-transition {
-            transition: none;
         }
 
         .card-exit-left {
