@@ -15,11 +15,11 @@
         /* Monitor */
         xl:gap-x-8 xl:gap-y-4 xl:px-8
     ">
-        <PrefBar preference="Sleep Schedule"/>
-        <PrefBar preference="Location"/>
-        <PrefBar preference="Cleanliness Level"/>
-        <PrefBar preference="Likes & Interests"/>
-        <PrefBar preference="Study & Work Habit"/>
-        <PrefBar preference="Budget"/>
+        <PrefBar preference="Sleep Schedule" route="sleep"/>
+        <PrefBar preference="Location" route=""/>
+        <PrefBar preference="Cleanliness Level" route="cleanliness"/>
+        <PrefBar preference="Likes & Interests" route="likes"/>
+        <PrefBar preference="Study & Work Habit" route="habits"/>
+        <PrefBar preference="Budget" route="budget"/>
     </div>
 </template>
