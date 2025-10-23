@@ -113,16 +113,6 @@ const goBack = () => {
           </select>
         </div>
 
-        <div>
-          <label class="block text-gray-700 font-semibold mb-2 text-lg">Distance Away</label>
-          <input 
-            v-model="formData.distance"
-            type="text"
-            placeholder="e.g., 3 km away"
-            class="w-full border-b-2 border-gray-300 focus:border-blue-400 outline-none py-3 px-2 text-gray-800 text-lg"
-          >
-        </div>
-
       </div>
 
       <!-- Action Buttons -->

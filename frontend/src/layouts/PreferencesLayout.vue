@@ -42,8 +42,7 @@ const goToHome = () => {
                 
                 /* Monitor */
                 xl:text-2xl xl:-mt-24 xl:mb-8"
-            >
-                Select your preferences
+            > Select your preferences
             </p>
 
             <router-view />

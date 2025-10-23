@@ -5,23 +5,52 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 const profile = ref({
-  name: "",
-  age: "",
-  location: "",
-  gender: "",
-  distance: "",
-  avatar: "",
+ name: "",
+ age: "",
+ location: "",
+ gender: "",
+ distance: "",
+ avatar: "",
 });
 
-onMounted(() => {
-  const savedProfile = localStorage.getItem("userProfile");
-  if (savedProfile) {
-    profile.value = JSON.parse(savedProfile);
-  }
+onMounted(async () => {
+  const userId = localStorage.getItem("user_id"); 
+    if (!userId) {
+        router.push("/auth/login"); 
+        return;
+    }
+  
+    try {
+      
+        const response = await fetch(`http://localhost:3000/api/profiles/${userId}`);
+
+        if (response.ok) {
+            const result = await response.json();
+            const fetchedProfile = result.profile; 
+          
+            profile.value = {
+               
+                name: fetchedProfile.name || fetchedProfile.username || "N/A", 
+                age: fetchedProfile.age || "—",
+                location: fetchedProfile.location || "—",
+                gender: fetchedProfile.gender || "—",
+                distance: profile.value.distance, 
+                avatar: fetchedProfile.picture_url || "", 
+            };
+
+        } else if (response.status === 404) {
+             console.log("Profile data not complete. Showing default placeholders.");
+             
+        } else {
+            console.error("Server Error:", response.status);
+        }
+    } catch (error) {
+        console.error("Network Error:", error);
+    }
 });
 
 const goToEdit = () => {
-  router.push("/profile/editprofile");
+   router.push("/profile/editprofile");
 };
 </script>
 
