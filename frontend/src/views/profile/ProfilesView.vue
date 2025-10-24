@@ -21,8 +21,12 @@ onMounted(() => {
 });
 
 const goToEdit = () => {
-  router.push("/profile/editprofile");
+  router.push("/main/editprofile");
 };
+
+const goToPreference = () => {
+  router.push("/pref/gender")
+}
 </script>
 
 <template>
@@ -74,6 +78,7 @@ const goToEdit = () => {
         Edit Profile
       </button>
       <button
+        @click="goToPreference"
         class="bg-white rounded-full py-4 text-xl font-semibold shadow-md hover:bg-gray-50 transition"
       >
         Set Preferences
