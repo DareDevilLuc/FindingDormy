@@ -85,22 +85,7 @@ const routes = [
                 name: 'review',
                 component: ReviewView
             },
-        ]
-    },
-    {
-        path: '/profile',
-        component: ProfileLayout,
-        children: [
-            {
-                path: 'profile',
-                name: 'profile',
-                component: ProfilesView
-            },
-            {
-                path: 'editprofile',
-                name: 'editprofile',
-                component: EditProfileView
-            }
+
         ]
     },
     {
@@ -137,6 +122,16 @@ const routes = [
                 path: 'findDorm',
                 name: 'findDorm',
                 component: FindDormView
+            },
+            {
+                path: 'profile',
+                name: 'profile',
+                component: ProfilesView
+            },
+            {
+                path: 'editprofile',
+                name: 'editprofile',
+                component: EditProfileView
             }
         ]
     },
