@@ -38,7 +38,7 @@ const saveProfile = () => {
 }
 
 const goBack = () => {
-  router.push('/profile/profile') // Cancel and go back
+  router.push('/main/profile') // Cancel and go back
 }
 </script>
 
