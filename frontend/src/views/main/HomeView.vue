@@ -31,7 +31,7 @@ const navigateToFindDorm = () => {
                 text-lg
                 md:text-xl
                 xl:text-2xl">
-                I'm looking for a Roommate
+                I'm looking for a dormy
             </p>
         </button>
         
