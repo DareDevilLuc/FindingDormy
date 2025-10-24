@@ -111,7 +111,7 @@ const goToPreference = () => {
     <!-- Peer Reviews Section -->
     <div class="w-full max-w-5xl mt-12 px-6">
       <h3 class="text-3xl font-bold text-gray-800 mb-3">Peer Reviews</h3>
-      <div class="text-gray-500 italic text-lg">to be coming...</div>
+      <div class="text-gray-500 italic text-lg">to come...</div>
     </div>
 
   </div>
