@@ -32,9 +32,14 @@
       <!-- Location -->
       <div class="bg-slate-50 p-4 md:p-5 rounded-lg md:rounded-xl border border-slate-200">
         <p class="text-xs md:text-sm text-slate-600">Location</p>
-        <p class="font-semibold text-slate-900 text-base md:text-lg">
-          {{ preferences.location }}
-        </p>
+        <div class="space-y-2">
+          <p class="font-semibold text-slate-900 text-base md:text-lg">
+            From: {{ preferences.userArea }}
+          </p>
+          <p class="font-semibold text-slate-900 text-base md:text-lg">
+            Looking for dorm in: {{ preferences.goalArea }}
+          </p>
+        </div>
       </div>
 
       <!-- Budget -->

@@ -57,7 +57,7 @@ const isStepComplete = computed(() => {
         case 'cleanliness':
             return prefs.cleanliness > 0
         case 'location':
-            return true // Always allow proceeding since it's a placeholder
+            return prefs.userArea !== '' && prefs.goalArea !== ''
         case 'budget':
             return prefs.budget > 0
         case 'likes':
@@ -66,6 +66,7 @@ const isStepComplete = computed(() => {
             return true
     }
 });
+
 </script>
 
 <template>
