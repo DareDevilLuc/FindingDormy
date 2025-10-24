@@ -43,7 +43,7 @@ const handleSignup = async () => {
 
 const closePopup = () => {
   showPopup.value = false
-  router.push('/pref/selectPref')
+  router.push('/pref/gender')
 }
 </script>
 
