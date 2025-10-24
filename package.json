@@ -9,6 +9,7 @@
     "concurrently": "^8.2.0"
   },
   "dependencies": {
+    "lucide-vue-next": "^0.546.0",
     "vue-router": "^4.6.3"
   }
 }
