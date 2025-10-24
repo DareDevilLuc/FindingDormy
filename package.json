@@ -9,14 +9,11 @@
     "concurrently": "^8.2.0"
   },
   "dependencies": {
-<<<<<<< HEAD
     "bcrypt": "^6.0.0",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "pg": "^8.16.3",
-=======
     "lucide-vue-next": "^0.546.0",
->>>>>>> origin/main
     "vue-router": "^4.6.3"
   },
   "description": "A platform for convenience that aims to help users find dormmates in order to fill their living space or to find living spaces themselves, matching with other people that fits their preferences through filters.",
