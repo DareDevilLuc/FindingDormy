@@ -1,17 +1,17 @@
 <script setup>
+import axios from 'axios'
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
 const formData = ref({
-  name: '',
-  age: '',
-  location: '',
-  gender: '',
-  distance: '',
-  bio: '',
-  avatar: ''
+  name: "...",
+  age: "...",
+  gender: "...",
+  school: "...",
+  location: "...",
+  picture_url: "..."
 })
 
 onMounted(() => {
@@ -26,15 +26,28 @@ const handleImageUpload = (event) => {
   if (file) {
     const reader = new FileReader()
     reader.onload = (e) => {
-      formData.value.avatar = e.target.result
+      formData.value.picture_url = e.target.result
     }
     reader.readAsDataURL(file)
   }
 }
 
-const saveProfile = () => {
-  localStorage.setItem('userProfile', JSON.stringify(formData.value))
-  router.push('/main/profile') // Go back to Profiles.vue
+const saveProfile = async () => {
+  try {
+    const savedUserId = localStorage.getItem("userId")
+    const userId = Number(savedUserId)
+    if (!savedUserId || isNaN(userId)) return console.error("Invalid user ID")
+    const payload = {
+      ...formData.value,
+      age: Number(formData.value.age) || null
+    }
+    await axios.put(`http://localhost:3000/api/profiles/${userId}`, payload)
+
+    localStorage.setItem('userProfile', JSON.stringify(payload))
+    router.push('/main/profile')
+  } catch (err) {
+    console.error('Failed to save profile:', err)
+  }
 }
 
 const goBack = () => {

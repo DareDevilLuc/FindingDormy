@@ -33,7 +33,7 @@ const handleLogin = async () => {
             // 3. Handle successful login
             // Might save the user data/token here (e.g., in local storage or a store)
             if (data.user && data.user.id) { 
-                localStorage.setItem('user_id', data.user.id);
+              localStorage.setItem('userId', data.user.id);
             }
             router.push('/main/home')
 
