@@ -3,11 +3,6 @@ import AuthLayout from '../layouts/AuthLayout.vue';
 import LoginView from '../views/auth/LoginView.vue';
 import SignupView from '../views/auth/SignupView.vue';
 import PreferencesLayout from '../layouts/PreferencesLayout.vue';
-<<<<<<< HEAD
-import SelectPreferencesView from '../views/pref/SelectPreferencesView.vue';
-import CleanlinessView from '../views/pref/CleanlinessView.vue';
-import LocationVieww from '../views/pref/LocationVieww.vue';
-=======
 import HomeView from '../views/main/HomeView.vue';
 import MainLayout from '../layouts/MainLayout.vue';
 import CleanlinessView from '../views/pref/CleanlinessView.vue';
@@ -28,7 +23,7 @@ import TestView from '../views/pref/TestView.vue';
 import ReviewView from '../views/pref/ReviewView.vue';
 import GenderView from '../views/pref/GenderView.vue';
 import LocationView from '../views/pref/LocationView.vue';
->>>>>>> origin/main
+import ChatView from '../views/pref/ChatView.vue';
 // Import Pages here
 
 const routes = [
@@ -57,11 +52,6 @@ const routes = [
         component: PreferencesLayout,
         children: [
             {
-<<<<<<< HEAD
-                path: 'selectPref',
-                name: 'selectPref',
-                component: SelectPreferencesView
-=======
                 path: 'gender',
                 name: 'gender',
                 component: () => GenderView
@@ -70,7 +60,6 @@ const routes = [
                 path: 'sleep',
                 name: 'sleep',
                 component: SleepScheduleView
->>>>>>> origin/main
             },
             {
                 path: 'cleanliness',
@@ -80,9 +69,6 @@ const routes = [
             {
                 path: 'location',
                 name: 'location',
-<<<<<<< HEAD
-                component: LocationVieww
-=======
                 component: LocationView
             },
             {
@@ -116,7 +102,6 @@ const routes = [
                 path: 'dormmatepost',
                 name: 'dormmatepost',
                 component: DormmatePostView
->>>>>>> origin/main
             }
         ]
     },
@@ -150,6 +135,11 @@ const routes = [
                 component: EditProfileView
             }
         ]
+    },
+    {
+        path: '/pref/chat',
+        name: 'chat',
+        component: ChatView
     },
 ];
 
