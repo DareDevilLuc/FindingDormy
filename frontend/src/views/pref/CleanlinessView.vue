@@ -21,13 +21,7 @@ function setRating(value) {
             w-full max-w-xs h-auto
             md:max-w-sm 
             xl:max-w-lg xl:rounded-[50px] xl:p-12">
-          <p class="font-judson text-center
-            text-xl mb-4
-            md:text-2xl md:mb-6
-            xl:text-4xl xl:mb-8">
-            Cleanliness Level
-          </p>
-
+          
           <div class="flex justify-center gap-4 md:gap-6">
             <button
               v-for="star in stars"
