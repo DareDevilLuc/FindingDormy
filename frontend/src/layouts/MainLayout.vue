@@ -1,26 +1,50 @@
 <script setup>
 import { useRouter } from 'vue-router';
+import { User, MessageCircle } from 'lucide-vue-next';
 
 const router = useRouter();
 
 const goToHome = () => {
     router.push({ name: 'home' });
 };
+
+const goToProfiles = () => {
+    router.push({ name: 'profile' });
+};
+
+const goToMessaging = () => {
+    router.push({ name: 'messaging' });
+};
 </script>
 
 <template>
-  <main 
-    class="
-      relative flex flex-col items-center justify-start min-h-screen
-      bg-blue-100 overflow-hidden
-    "
-  >
-    <!-- Decorative blurred shapes (like in AuthLayout) -->
-    <div class="absolute inset-0 -z-10">
-      <div class="absolute top-[-10%] left-[-10%] w-[400px] h-[400px] bg-purple-100 rounded-full blur-3xl opacity-40 animate-pulse"></div>
-      <div class="absolute bottom-[-10%] right-[-10%] w-[450px] h-[450px] bg-blue-100 rounded-full blur-3xl opacity-30 animate-pulse"></div>
-      <div class="absolute top-[30%] right-[40%] w-[300px] h-[300px] bg-pink-100 rounded-full blur-2xl opacity-25"></div>
-      <div class="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-gray-100"></div>
+    <div class="min-h-screen flex flex-col justify-start">
+        <!-- Added top navigation bar with logo and icons -->
+        <div class="flex justify-center items-center mt-[-2rem]">
+            <div class="flex cursor-pointer" @click="goToHome">
+                <img src="../assets/Logo.png" alt="Dormy Logo" class="hover:opacity-90 transition-opacity duration-200" />
+            </div>
+            
+            <!-- Added icons container at top right -->
+            <div class="flex gap-4">
+                <button 
+                    @click="goToProfiles"
+                    class="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200"
+                    aria-label="Go to profiles"
+                >
+                    <User size="48" class="text-gray-700 hover:text-gray-900" />
+                </button>
+                <button 
+                    @click="goToMessaging"
+                    class="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200"
+                    aria-label="Go to messaging"
+                >
+                    <MessageCircle size="48" class="text-gray-700 hover:text-gray-900" />
+                </button>
+            </div>
+        </div>
+        
+        <router-view/>
     </div>
 
     <!-- Logo Section -->
