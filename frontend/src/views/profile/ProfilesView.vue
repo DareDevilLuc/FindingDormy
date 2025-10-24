@@ -34,7 +34,7 @@ onMounted(async () => {
                 age: fetchedProfile.age || "—",
                 location: fetchedProfile.location || "—",
                 gender: fetchedProfile.gender || "—",
-                distance: profile.value.distance, 
+                school: fetchedProfile.school || "—",
                 avatar: fetchedProfile.picture_url || "", 
             };
 
@@ -59,65 +59,60 @@ const goToPreference = () => {
 </script>
 
 <template>
-  <div
-    class="w-full h-screen flex flex-col items-center justify-center text-center py-16 px-20 space-y-14"
-  >
+  <div class="w-full min-h-screen flex flex-col items-center py-16 px-10 space-y-12">
+    
     <!-- Header -->
-    <div class="flex items-center justify-between w-full px-20">
+    <div class="flex items-center justify-between w-full max-w-5xl px-6">
       <h2 class="text-4xl font-bold text-gray-900">User Profile</h2>
       <i class="fa-regular fa-user text-gray-600 text-3xl"></i>
     </div>
 
-    <!-- Top Info -->
-    <div class="flex items-center justify-between w-full px-32">
-      <div class="flex items-center gap-10">
-        <div
-          class="w-40 h-40 bg-gray-300 rounded-full flex items-center justify-center overflow-hidden"
-        >
+    <!-- Top Info Section -->
+    <div class="flex w-full max-w-5xl justify-between px-6">
+      <!-- Left: Avatar + Name/Info -->
+      <div class="flex items-center gap-8">
+        <div class="w-40 h-40 bg-gray-300 rounded-full flex items-center justify-center overflow-hidden">
           <span v-if="!profile.avatar" class="text-gray-500 text-lg">Photo</span>
-          <img
-            v-else
-            :src="profile.avatar"
-            alt="Profile"
-            class="w-full h-full object-cover"
-          />
+          <img v-else :src="profile.avatar" alt="Profile" class="w-full h-full object-cover" />
         </div>
 
         <div class="text-left">
           <h3 class="text-3xl font-semibold text-gray-900">
             {{ profile.name || "No name added" }}
           </h3>
-          <p class="text-gray-700 text-xl">{{ profile.age || "—" }}</p>
-          <p class="text-gray-700 text-xl">{{ profile.location || "—" }}</p>
+          <p class="text-gray-700 text-lg mt-1">{{ profile.age || "—" }}</p>
+          <p class="text-gray-700 text-lg">{{ profile.location || "—" }}</p>
         </div>
       </div>
 
-      <div class="text-right text-gray-700 text-xl">
+      <!-- Right: Gender & School -->
+      <div class="text-right text-gray-700 text-lg flex flex-col justify-center gap-2">
         <p>{{ profile.gender || "—" }}</p>
-        <p>{{ profile.distance || "—" }}</p>
+        <p>{{ profile.school || "—" }}</p>
       </div>
     </div>
 
-    <!-- Buttons -->
-    <div class="flex flex-col gap-8 w-1/2 max-w-3xl">
+    <!-- Action Buttons -->
+    <div class="flex flex-col gap-6 w-full max-w-md">
       <button
         @click="goToEdit"
-        class="bg-white rounded-full py-4 text-xl font-semibold shadow-md hover:bg-gray-50 transition"
+        class="bg-white rounded-full py-4 text-lg font-semibold shadow-md hover:bg-gray-50 transition"
       >
         Edit Profile
       </button>
       <button
         @click="goToPreference"
-        class="bg-white rounded-full py-4 text-xl font-semibold shadow-md hover:bg-gray-50 transition"
+        class="bg-white rounded-full py-4 text-lg font-semibold shadow-md hover:bg-gray-50 transition"
       >
         Set Preferences
       </button>
     </div>
 
-    <!-- Peer Reviews -->
-    <div class="w-full mt-10">
-      <h3 class="text-3xl font-bold text-gray-800 mb-4">Peer Reviews</h3>
+    <!-- Peer Reviews Section -->
+    <div class="w-full max-w-5xl mt-12 px-6">
+      <h3 class="text-3xl font-bold text-gray-800 mb-3">Peer Reviews</h3>
       <div class="text-gray-500 italic text-lg">to be coming...</div>
     </div>
+
   </div>
 </template>

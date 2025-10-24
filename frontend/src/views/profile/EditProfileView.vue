@@ -126,6 +126,16 @@ const goBack = () => {
           </select>
         </div>
 
+         <div>
+          <label class="block text-gray-700 font-semibold mb-2 text-lg">School</label>
+          <input 
+            v-model="formData.school"
+            type="text"
+            placeholder="Enter school"
+            class="w-full border-b-2 border-gray-300 focus:border-blue-400 outline-none py-3 px-2 text-gray-800 text-lg"
+          >
+        </div>
+
       </div>
 
       <!-- Action Buttons -->
