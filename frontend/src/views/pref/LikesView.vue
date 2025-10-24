@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from 'vue'
+import { usePreferencesStore } from '../../stores/preferences'
 
+const store = usePreferencesStore()
 const interests = [
   'Music',
   'Movies',
@@ -37,6 +39,9 @@ const toggleInterest = (interest) => {
     // Add if not at max limit
     selectedInterests.value.push(interest)
   }
+  
+  // Update store with current selections
+  store.updatePreference('interests', selectedInterests.value)
 }
 </script>
 

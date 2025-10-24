@@ -1,15 +1,23 @@
 <script setup>
-import { ref } from 'vue';
+import { computed } from 'vue';
+import { usePreferencesStore } from '../../stores/preferences'
 
-const minBudget = ref(500);
-const maxBudget = ref(2000);
+const store = usePreferencesStore()
+const preferences = computed(() => store.preferences)
+
+const updateBudget = (value) => {
+    store.updatePreference('budget', value)
+}
 </script>
 
 <template>
-    <div class="flex flex-col items-center justify-center w-full h-full">
-        <div class="rounded-3xl flex flex-col items-center shadow-md bg-blue-100 
-            w-full max-w-xs h-auto p-6
-            md:max-w-sm md:p-8 
+    <div class="animate-fade-in">
+        <h2 class="text-2xl md:text-3xl xl:text-4xl font-bold text-slate-900 mb-6 md:mb-8">
+            Budget Range
+        </h2>
+        <div class="space-y-4 md:space-y-6 bg-white rounded-2xl shadow-lg p-6 md:p-8
+            w-full max-w-xs h-auto
+            md:max-w-sm 
             xl:max-w-lg xl:rounded-[50px] xl:p-12">
             
             <p class="font-judson text-center
@@ -19,51 +27,27 @@ const maxBudget = ref(2000);
                 Budget
             </p>
 
-            <div class="w-full">
-                <div class="flex justify-between mb-4
-                    text-sm md:text-base xl:text-lg">
-                    <span class="text-gray-600">₱{{ minBudget }}</span>
-                    <span class="text-gray-600">₱{{ maxBudget }}</span>
-                </div>
-                
-                <div class="space-y-4 md:space-y-5 xl:space-y-8">
-                    <div>
-                        <label class="text-gray-600
-                            text-xs 
-                            md:text-sm
-                            xl:text-base">Min Budget</label>
-                        <input 
-                            v-model.number="minBudget"
-                            type="range"
-                            min="0"
-                            max="5000"
-                            step="100"
-                            class="w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer accent-blue-500 xl:h-3"
-                        />
-                    </div>
-                    <div>
-                        <label class="text-gray-600
-                            text-xs 
-                            md:text-sm
-                            xl:text-base">Max Budget</label>
-                        <input 
-                            v-model.number="maxBudget"
-                            type="range"
-                            min="0"
-                            max="5000"
-                            step="100"
-                            class="w-full h-2 bg-blue-200 rounded-lg appearance-none cursor-pointer accent-blue-500 xl:h-3"
-                        />
-                    </div>
-                </div>
+            <div class="flex items-center justify-between">
+                <span class="text-slate-700 font-medium text-lg md:text-xl">
+                    ₱{{ preferences.budget.toLocaleString() }}
+                </span>
+                <span class="text-slate-600 text-base md:text-lg">per month</span>
             </div>
-
-            <p class="text-center text-gray-700 font-semibold
-                mt-6 text-base
-                md:mt-8 md:text-lg
-                xl:mt-10 xl:text-2xl">
-                Budget Range: ₱{{ minBudget }} - ₱{{ maxBudget }}
-            </p>
+            
+            <input
+                :value="preferences.budget"
+                @input="e => updateBudget(Number(e.target.value))"
+                type="range"
+                min="1000"
+                max="15000"
+                step="500"
+                class="w-full h-2 md:h-3 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
+            />
+            
+            <div class="flex justify-between text-sm md:text-base text-slate-600">
+                <span>₱1,000</span>
+                <span>₱15,000</span>
+            </div>
         </div>
     </div>
 </template>

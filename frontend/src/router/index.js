@@ -3,7 +3,6 @@ import AuthLayout from '../layouts/AuthLayout.vue';
 import LoginView from '../views/auth/LoginView.vue';
 import SignupView from '../views/auth/SignupView.vue';
 import PreferencesLayout from '../layouts/PreferencesLayout.vue';
-import SelectPreferencesView from '../views/pref/SelectPreferencesView.vue';
 import HomeView from '../views/main/HomeView.vue';
 import MainLayout from '../layouts/MainLayout.vue';
 import CleanlinessView from '../views/pref/CleanlinessView.vue';
@@ -21,6 +20,9 @@ import DormmatePostView from '../views/posts/DormmatePostView.vue';
 import ProfilesView from '../views/profile/ProfilesView.vue';
 import EditProfileView from '../views/profile/EditProfileView.vue';
 import TestView from '../views/pref/TestView.vue';
+import ReviewView from '../views/pref/ReviewView.vue';
+import GenderView from '../views/pref/GenderView.vue';
+import LocationView from '../views/pref/LocationView.vue';
 // Import Pages here
 
 const routes = [
@@ -49,19 +51,9 @@ const routes = [
         component: PreferencesLayout,
         children: [
             {
-                path: 'selectPref',
-                name: 'selectPref',
-                component: SelectPreferencesView
-            },
-            {
-                path: 'cleanliness',
-                name: 'cleanliness',
-                component: CleanlinessView
-            },
-            {
-                path: 'budget',
-                name: 'budget',
-                component: BudgetView
+                path: 'gender',
+                name: 'gender',
+                component: () => GenderView
             },
             {
                 path: 'sleep',
@@ -69,9 +61,19 @@ const routes = [
                 component: SleepScheduleView
             },
             {
-                path: 'habits',
-                name: 'habits',
-                component: StudyWorkView
+                path: 'cleanliness',
+                name: 'cleanliness',
+                component: CleanlinessView
+            },
+            {
+                path: 'location',
+                name: 'location',
+                component: LocationView
+            },
+            {
+                path: 'budget',
+                name: 'budget',
+                component: BudgetView
             },
             {
                 path: 'likes',
@@ -79,10 +81,10 @@ const routes = [
                 component: LikesView
             },
             {
-                path: 'test',
-                name: 'test',
-                component: TestView
-            }
+                path: 'review',
+                name: 'review',
+                component: ReviewView
+            },
         ]
     },
     {

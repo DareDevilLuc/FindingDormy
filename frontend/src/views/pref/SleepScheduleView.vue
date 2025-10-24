@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from 'vue'
+import { usePreferencesStore } from '../../stores/preferences'
 
+const store = usePreferencesStore()
 const selectedSchedule = ref(null)
 const hoveredSchedule = ref(null)
 
@@ -27,10 +29,9 @@ const schedules = [
   }
 ]
 
-const handleDone = () => {
-  if (selectedSchedule.value) {
-    console.log('Selected schedule:', selectedSchedule.value)
-  }
+const selectSchedule = (scheduleId) => {
+  selectedSchedule.value = scheduleId
+  store.updatePreference('sleeping', scheduleId)
 }
 </script>
 
@@ -73,7 +74,7 @@ const handleDone = () => {
                     @mouseleave="hoveredSchedule = null"
                 >
                     <button
-                        @click="selectedSchedule = schedule.id"
+                        @click="selectSchedule(schedule.id)"
                         :class="[
                             'w-full rounded-xl font-medium transition-all duration-200',
                             'py-3 px-4 text-base',
