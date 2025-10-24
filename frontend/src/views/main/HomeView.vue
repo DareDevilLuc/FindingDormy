@@ -31,7 +31,7 @@ const navigateToFindDorm = () => {
                 text-lg
                 md:text-xl
                 xl:text-2xl">
-                I'm looking for a dormy
+                I'm looking for a Dormy
             </p>
         </button>
         
@@ -52,7 +52,7 @@ const navigateToFindDorm = () => {
                 text-lg
                 md:text-xl
                 xl:text-2xl">
-                I'm looking for a Room
+                I'm looking for a Dorm
             </p>
         </button>
     </div>
