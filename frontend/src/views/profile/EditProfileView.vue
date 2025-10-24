@@ -34,7 +34,7 @@ const handleImageUpload = (event) => {
 
 const saveProfile = () => {
   localStorage.setItem('userProfile', JSON.stringify(formData.value))
-  router.push('/') // Go back to Profiles.vue
+  router.push('/main/profile') // Go back to Profiles.vue
 }
 
 const goBack = () => {
