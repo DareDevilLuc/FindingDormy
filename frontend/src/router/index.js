@@ -22,8 +22,8 @@ import EditProfileView from '../views/profile/EditProfileView.vue';
 import TestView from '../views/pref/TestView.vue';
 import ReviewView from '../views/pref/ReviewView.vue';
 import GenderView from '../views/pref/GenderView.vue';
-import LocationView from '../views/pref/LocationView.vue';
-import ChatView from '../views/pref/ChatView.vue';
+import ChatView from '../views/main/ChatView.vue';
+import LocationView from '../views/pref/LocationView.vue'
 // Import Pages here
 
 const routes = [
@@ -133,14 +133,14 @@ const routes = [
                 path: 'editprofile',
                 name: 'editprofile',
                 component: EditProfileView
+            },
+            {
+                path: '/pref/chat',
+                name: 'chat',
+                component: ChatView
             }
         ]
-    },
-    {
-        path: '/pref/chat',
-        name: 'chat',
-        component: ChatView
-    },
+    }
 ];
 
 const router = createRouter({

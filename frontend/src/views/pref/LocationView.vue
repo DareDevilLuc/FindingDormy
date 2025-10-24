@@ -1,62 +1,78 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, watch } from 'vue'
 import { usePreferencesStore } from '../../stores/preferences'
 
 const store = usePreferencesStore()
-const preferences = computed(() => store.preferences)
 
-// Placeholder data - this will be replaced with real functionality later
-const locations = [
-  'On Campus',
-  'Near Campus',
-  'City Center',
-  'Suburbs'
+const userArea = ref(store.preferences.userArea)
+const goalArea = ref(store.preferences.goalArea)
+
+// cities in Cebu
+const cebuCities = [
+  "Cebu City", "Mandaue City", "Lapu-Lapu City", "Talisay City", "Danao City",
+  "Naga City", "Carcar City", "Bogo City", "Toledo City"
 ]
 
-const selectedLocation = ref(preferences.value.location || '')
+// Cebu City barangays
+const barangays = [
+  "Adlaon", "Agsungot", "Apas", "Babag", "Bacayan", "Banilad", "Basak Pardo", "Basak San Nicolas", 
+  "Bonbon", "Budlaan", "Buhisan", "Bulacao", "Busay", "Calamba", "Cambinocot", "Capitol Site", 
+  "Carreta", "Cogon Pardo", "Cogon Ramos", "Day-as", "Duljo-Fatima", "Ermita", "Guadalupe", 
+  "Guba", "Hipodromo", "Inayawan", "Kalubihan", "Kamagayan", "Kasambagan", 
+  "Kinasang-an", "Labangon", "Lahug", "Lorega San Miguel", "Lusaran", "Luz", 
+  "Mabini", "Mabolo", "Malubog", "Mambaling", "Pahina Central", "Pahina San Nicolas", 
+  "Pamutan", "Pari-an", "Paril", "Pit-os", "Pulangbato", "Pung-ol Sibugay", "Pardo", 
+  "San Antonio", "San Jose", "San Nicolas Proper", "Sambag I", "Sambag II", 
+  "Sapangdaku", "Sawang Calero", "Sinsin", "Sirao", "Suba", "Sudlon I", "Sudlon II", 
+  "T. Padilla", "Talamban", "Taptap", "Tejero", "Tinago", "To-ong"
+]
 
-function setLocation(value) {
-  selectedLocation.value = value
-  store.updatePreference('location', value)
-}
+watch(userArea, (newValue) => {
+  store.updatePreference('userArea', newValue)
+})
+
+watch(goalArea, (newValue) => {
+  store.updatePreference('goalArea', newValue)
+})
 </script>
 
 <template>
-  <div class="animate-fade-in">
-    <h2 class="text-2xl md:text-3xl xl:text-4xl font-bold text-slate-900 mb-6 md:mb-8">
-      Preferred Location
-    </h2>
-    <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 text-center
-        w-full max-w-xs 
-        md:max-w-sm
-        xl:max-w-lg xl:rounded-[50px]">
-      
-      <p class="font-judson text-center
-        text-xl mb-6
-        md:text-2xl md:mb-8
-        xl:text-4xl xl:mb-10">
-        Where would you prefer to live?
-      </p>
+  <div class="flex flex-col items-center justify-center mt-[-2rem]">
+    <!-- Card Container -->
+    <div
+      class="bg-blue-100 rounded-3xl px-10 py-8 flex flex-col items-center shadow-md"
+      style="width: 500px; height: 330px; background-color: #DCF0FA"
+    >
+      <!-- Title -->
+      <h2 class="text-2xl font-serif text-gray-900 mb-6">Location</h2>
 
-      <div class="grid grid-cols-1 gap-4 md:gap-5">
-        <button
-          v-for="location in locations"
-          :key="location"
-          @click="setLocation(location)"
-          class="p-4 md:p-5 rounded-xl border-2 transition-all text-left"
-          :class="[
-            selectedLocation === location
-              ? 'border-[#50B8E7] bg-blue-50 text-[#50B8E7]'
-              : 'border-slate-200 hover:border-slate-300 text-slate-600 hover:bg-slate-50'
-          ]"
+      <!-- Question 1: Cities in Cebu -->
+      <div class="mb-4 w-full">
+        <p class="text-gray-700 mb-2">Where are you from?</p>
+        <select
+          v-model="userArea"
+          class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
         >
-          <span class="font-medium text-base md:text-lg">{{ location }}</span>
-        </button>
+          <option disabled value="">Select your city</option>
+          <option v-for="city in cebuCities" :key="city" :value="city">
+            {{ city }}
+          </option>
+        </select>
       </div>
 
-      <p class="mt-6 md:mt-8 text-slate-500 text-sm md:text-base italic">
-        Note: Exact locations and more options will be available in future updates
-      </p>
+      <!-- Question 2: Barangays in Cebu City -->
+      <div class="mb-6 w-full">
+        <p class="text-gray-700 mb-2">Where do you want to find a dorm?</p>
+        <select
+          v-model="goalArea"
+          class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        >
+          <option disabled value="">Select goal area</option>
+          <option v-for="barangay in barangays" :key="barangay" :value="barangay">
+            {{ barangay }}
+          </option>
+        </select>
+      </div>
     </div>
   </div>
 </template>

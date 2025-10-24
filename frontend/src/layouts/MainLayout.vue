@@ -13,7 +13,7 @@ const goToProfiles = () => {
 };
 
 const goToMessaging = () => {
-    router.push({ name: 'messaging' });
+    router.push({ name: 'chat' });
 };
 </script>
 
